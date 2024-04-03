@@ -1,0 +1,22 @@
+/* 헤더바 */
+header {
+	margin-top: 10px;
+	border-bottom: 2px solid #ededef;
+	padding-bottom: 4px;
+}
+
+/* 인포바 */
+.info-bar {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 15px 0 15px;
+}
+
+.info-bar__title {
+	font-size: 20px;
+	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.info-bar__icons img {
+	width: 25px;
+}

@@ -1,0 +1,33 @@
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* board-block에는 내부 요소가 없어서 적용x, 상위 요소에 적어주어야 함 */
+	gap: 5px;
+	padding: 80px 20px 30px 20px;
+}
+
+.board-row {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+.board-block {
+	width: 70px;
+	height: 70px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid #babbaf;
+	/* margin: 5px 5px 5px 5px; --> gap 속성을 이용*/
+}
+
+#timer {
+	font-weight: bold;
+	font-size: 20px;
+}
