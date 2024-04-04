@@ -23,6 +23,7 @@ function appStart() {
     //게임 종료 함수
     const gameover = () => {
         window.removeEventListener("keydown", handleKeydown); //키보드 입력이 안되도록 이벤트를 없앰
+        window.removeEventListener("click", clickKeydown);
         displayGameover();
         //게임 종료시 타이머도 멈춤
         clearInterval(timer);
@@ -44,8 +45,9 @@ function appStart() {
             block.style.color = "white";
         }
 
-        if (맞은_갯수 === 5) gameover();
-        else nextLine();
+        if (맞은_갯수 === 5) {
+            gameover();
+        } else nextLine();
     };
 
     //백스페이스가 눌렸을 때 이벤트 함수
@@ -77,6 +79,25 @@ function appStart() {
 
     }
 
+    //마우스로 클릭해서 입력하기
+    const clickKeydown = (event) => {
+
+        const keys = event.target.getAttribute("data-key");
+        const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
+
+        if (keys === "Backspace") handleBackspace();  //백스페이스가 선택되면
+        else if (index === 5) {
+            if (keys === 'Enter') handleEnterKey();
+            else return; //엔터키가 아닌 다른 키가 눌리면 끝냄
+        }
+        else if (keys === 'Enter') handleEnterKey(); // 엔터키가 눌리면
+        else if (keys !== null && keys.length === 1) {
+            thisBlock.innerText = keys;
+            index += 1; //한 번 입력하고 나서 인덱스 값을 1씩 늘림
+        }
+
+    }
+
     //게임 진행 타이머
     const startTimer = () => {
         const 시작_시간 = new Date();
@@ -95,6 +116,7 @@ function appStart() {
 
     startTimer();
     window.addEventListener("keydown", handleKeydown);
+    window.addEventListener("click", clickKeydown);
 }
 
 appStart();
