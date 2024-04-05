@@ -1,5 +1,3 @@
-const 정답 = "APPLE";
-
 let index = 0; // 수정이 가능한 변수 생성, 입력 후 다음 칸으로 넘어가게 하기 위한 변수
 let attempts = 0; // 시도 가능 횟수 체크 할 변수 생성
 let timer
@@ -29,8 +27,13 @@ function appStart() {
         clearInterval(timer);
     }
 
-    const handleEnterKey = () => {
+    const handleEnterKey = async () => {
         let 맞은_갯수 = 0;
+
+        //서버에서 정답을 받아옴
+        const 응답 = await fetch('/answer') //서버에 /answer 라는 경로로 요청을 보냄. 
+        const 정답 = await 응답.json(); //json 포맷으로 바꾸고 값을 '정답' 변수에 저장
+        //const 정답 = 정답_객체.answer; //객체로 전달 받을 때 추가로 필요한 코드.
 
         for (let i = 0; i < 5; i++) {
             const block = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
