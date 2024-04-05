@@ -47,3 +47,32 @@ footer {
 .keyboard-block:hover {
 	cursor: pointer;
 }
+
+/* @keyframes 오답 {
+	from {
+		transform: rotate(1deg);
+	}
+	to {
+		transform: rotate(-1deg);
+	}
+}
+
+@keyframes 정답 {
+	0% {
+		transform: scale(0.5);
+	}
+	50% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.yes {
+	animation: 정답 0.5s 1 ease-in-out;
+}
+
+.no {
+	animation: 오답 0.1s 3;
+} */
